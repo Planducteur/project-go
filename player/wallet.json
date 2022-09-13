@@ -12,5 +12,12 @@
   "WalletAddress": "0xG1VXJHZ7NJHEED70YH9Y9IDI7KZ1FW4HIY9BJB4M5OJTN",
   "CurrencyBalance": 0,
   "CurrencyCode": "ETH"
+ },
+ {
+  "PlayerId": 3,
+  "PinCode": "123456",
+  "WalletAddress": "0xXGCITSBN9J0OT624V7WJWS3K0UHB5CIOVGDPFMFGJBXII",
+  "CurrencyBalance": 0,
+  "CurrencyCode": "ETH"
  }
 ]

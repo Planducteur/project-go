@@ -7,7 +7,6 @@ import (
 	"io/ioutil"
 	"math/rand"
 	"net/http"
-	//"os"
 	"strings"
 	"time"
 )
@@ -19,6 +18,10 @@ func CheckFormValue(w http.ResponseWriter, r *http.Request) (res bool, errStr st
 	reqBody, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		io.WriteString(w, "failed to read file: "+err.Error())
+		erreur,_ := json.Marshal(map[string]string{
+			"erreur": err.Error(),
+		})
+		w.Write(erreur)
 		return
 	}
 
@@ -27,6 +30,10 @@ func CheckFormValue(w http.ResponseWriter, r *http.Request) (res bool, errStr st
 	err = json.Unmarshal(reqBody, &post)
 	if err != nil {
 		io.WriteString(w, "failed to read response body: "+ err.Error())
+		erreur,_ := json.Marshal(map[string]string{
+			"erreur": err.Error(),
+		})
+		w.Write(erreur)
 		return
 	}
 
@@ -89,9 +96,10 @@ func CreateNewPlayer(w http.ResponseWriter, r *http.Request) {
 		newWalletBytes, err := json.Marshal(newWallet)
 
 		if err != nil {
-			newWalletBytes, _ := json.MarshalIndent(err, "", "")
-			w.WriteHeader(http.StatusOK)
-			_, err = w.Write(newWalletBytes)
+			erreur,_ := json.Marshal(map[string]string{
+				"erreur": err.Error(),
+			})
+			w.Write(erreur)
 			return
 		}
 
@@ -99,6 +107,10 @@ func CreateNewPlayer(w http.ResponseWriter, r *http.Request) {
 		_, err = w.Write(newWalletBytes)
 		if err != nil {
 			io.WriteString(w, "Unable to write response :"+err.Error())
+			erreur,_ := json.Marshal(map[string]string{
+				"erreur": err.Error(),
+			})
+			w.Write(erreur)
 			return
 		}
 

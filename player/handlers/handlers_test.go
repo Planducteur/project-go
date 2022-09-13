@@ -3,10 +3,10 @@ package handlers
 import (
 	"bytes"
 	"encoding/json"
+	//"math/rand"
 	"net/http"
 	"net/http/httptest"
 	"testing"
-	"math/rand"
 )
 
 type User struct {
@@ -17,9 +17,35 @@ type User struct {
 }
 
 func Benchmark(b *testing.B) {
-     for i := 0; i < b.N; i++ {
-	rand.Int()
-}
+
+	httpposturl := "http://localhost/ethereum/wallets/create/"
+	var1, _ := json.Marshal(User{
+		Username: "Bob",
+		Password: "123456%", // doit accepter les caractères spéciaux dans le mot de passe
+		PinCode:  "123456"})
+	r1, _ := http.NewRequest("POST", httpposturl, bytes.NewBuffer(var1))
+
+	type args struct {
+		w http.ResponseWriter
+		r *http.Request
+	}
+	tests := []struct {
+		name string
+		args args
+	}{
+		{
+			name: "caractères spéciaux password",
+			args: args{w: httptest.NewRecorder(), r: r1},
+		},
+	}
+
+	for _, tt := range tests {
+		for i := 0; i < b.N; i++ {
+			CreateNewPlayer(tt.args.w, tt.args.r)
+		}
+
+	}
+
 }
 
 func TestCreateNewPlayer(t *testing.T) {

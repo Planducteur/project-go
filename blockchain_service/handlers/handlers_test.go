@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
-	"math/rand"
+	//"math/rand"
 )
 
 type Wallet struct {
@@ -15,8 +15,30 @@ type Wallet struct {
 }
 
 func Benchmark(b *testing.B) {
+	httpposturl := "http://localhost:8091/create/"
+	var1, _ := json.Marshal(Wallet{
+		CurrencyCode: "",
+		PinCode: "123456",}) 
+	r1, _ := http.NewRequest("POST", httpposturl, bytes.NewBuffer(var1))
+
+	type args struct {
+		w http.ResponseWriter
+		r *http.Request
+	}
+	tests := []struct {
+		name string
+		args args
+	}{
+		{
+			name: "caractères spéciaux password",
+			args: args{w: httptest.NewRecorder(), r: r1},
+		},
+		
+	}
 	for i := 0; i < b.N; i++ {
-   rand.Int()
+		for _, tt := range tests {
+				CreateNewPlayer(tt.args.w, tt.args.r)
+		}
 }
 }
 

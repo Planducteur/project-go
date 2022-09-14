@@ -86,7 +86,7 @@ func CreateNewPlayer(w http.ResponseWriter, r *http.Request) {
 		})
 
 		responseBody := bytes.NewBuffer(postBody)
-		resp, err := http.Post("http://localhost:8091/create/", "application/json", responseBody)
+		resp, err := http.Post("http://127.0.0.1:8091/create/", "application/json", responseBody)
 		//Handle Error
 		if err != nil {
 			io.WriteString(w, "failed to post create wallet: "+err.Error())

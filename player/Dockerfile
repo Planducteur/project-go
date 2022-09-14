@@ -11,4 +11,5 @@ COPY . .
 
 RUN go build -o /usr/local/bin/player
 
-CMD ["player"]
+CMD ["player", "--host", "0.0.0.0"]
+

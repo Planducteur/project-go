@@ -12,4 +12,4 @@ COPY . .
 
 RUN go build -o /usr/local/bin/blockchain
 
-CMD ["blockchain"]
+CMD ["blockchain", "--host", "0.0.0.0"]

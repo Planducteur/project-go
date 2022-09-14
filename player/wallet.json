@@ -2,21 +2,7 @@
  {
   "PlayerId": 1,
   "PinCode": "123456",
-  "WalletAddress": "0xVB65JLPMBT7MFX0T5819GJ4UHS64TQX4EMPV7N32094VU",
-  "CurrencyBalance": 0,
-  "CurrencyCode": "ETH"
- },
- {
-  "PlayerId": 2,
-  "PinCode": "123456",
-  "WalletAddress": "0xG1VXJHZ7NJHEED70YH9Y9IDI7KZ1FW4HIY9BJB4M5OJTN",
-  "CurrencyBalance": 0,
-  "CurrencyCode": "ETH"
- },
- {
-  "PlayerId": 3,
-  "PinCode": "123456",
-  "WalletAddress": "0xXGCITSBN9J0OT624V7WJWS3K0UHB5CIOVGDPFMFGJBXII",
+  "WalletAddress": "0xL82RLB8YCJHVSZSGX5HYB679K4A81O5DQFCQ6C2FV9URL",
   "CurrencyBalance": 0,
   "CurrencyCode": "ETH"
  }

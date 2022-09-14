@@ -101,6 +101,7 @@ func CreateNewPlayer(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		io.WriteString(w, "player addet successfully\n")
+		io.WriteString(w, "your user information :\n"+"USERNAME : "+s[0]+"\n"+"PASSWORD : "+s[1]+"\n"+"PINCODE : "+s[2]+"\n")
 		CreateNewWallet(w, body1, id, s[2])
 
 
@@ -158,23 +159,12 @@ func CreateNewWallet(w http.ResponseWriter, body []byte, value int, pin string) 
 
 	json.Unmarshal(body, &wallet)
 
-	
-
 	newWallet.WalletAddress = wallet.WalletAddress
 	newWallet.CurrencyBalance = wallet.CurrencyBalance
 	newWallet.CurrencyCode = wallet.CurrencyCode
-/*
-	for _, wall := range wallet.Wallets {
-		newWallet.WalletAddress = wall.WalletAddress
-		newWallet.CurrencyBalance = wall.CurrencyBalance
-		newWallet.CurrencyCode = wall.CurrencyCode
-	}*/
 
 	newWallet.PlayerId = value
 	newWallet.PinCode = pin
-
-	//sb := string(body)
-	//fmt.Printf(sb)
 
 	wal, err := os.OpenFile("wallet.json", os.O_RDWR, 0644)
 	if err != nil {
@@ -196,5 +186,7 @@ func CreateNewWallet(w http.ResponseWriter, body []byte, value int, pin string) 
 		return
 	}
 	ioutil.WriteFile("wallet.json", newWalletBytes, 0666)
-	io.WriteString(w, "wallet addet successfully\n")
+	io.WriteString(w, "\nwallet addet successfully\n")
+	CurrencyBalance := fmt.Sprintf("%f", wallet.CurrencyBalance)
+	io.WriteString(w, "your wallet information :\n"+"Wallet Address : "+wallet.WalletAddress+"\n"+"Currency Balance : "+CurrencyBalance+"\n"+"Currency Code : "+wallet.CurrencyCode+"\n")
 }

@@ -57,7 +57,7 @@ for tests
 
 or 
 ```
-go test -bench . -benchman
+go test -bench .
 ```
 for the benchmarks
 
@@ -73,7 +73,7 @@ for tests
 
 or 
 ```
-go test -bench . -benchman
+go test -bench .
 ```
 for the benchmarks
 

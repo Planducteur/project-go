@@ -14,6 +14,7 @@ type Wallet struct {
 	PinCode 		string 
 }
 
+
 func Benchmark(b *testing.B) {
 	httpposturl := "http://localhost:8091/create/"
 	var1, _ := json.Marshal(Wallet{
@@ -78,23 +79,23 @@ func TestCreateNewPlayer(t *testing.T) {
 		args args
 	}{
 		{
-			name: "caractères spéciaux password",
+			name: "test1",
 			args: args{w: httptest.NewRecorder(), r: r1},
 		},
 		{
-			name: "caractères spéciaux user",
+			name: "test2",
 			args: args{w: httptest.NewRecorder(), r: r2},
 		},
 		{
-			name: "mot de passe trop court",
+			name: "test3",
 			args: args{w: httptest.NewRecorder(), r: r3},
 		},
 		{
-			name: "pin trop court",
+			name: "test4",
 			args: args{w: httptest.NewRecorder(), r: r4},
 		},
 		{
-			name: "pin trop court",
+			name: "test4",
 			args: args{w: httptest.NewRecorder(), r: r5},
 		},
 	}

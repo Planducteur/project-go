@@ -59,6 +59,9 @@ or
 ```
 go test -bench .
 ```
+```
+go test -bench=.
+```
 for the benchmarks
 
 **to test and benchemark the api you need to follow the commands**
@@ -74,6 +77,9 @@ for tests
 or 
 ```
 go test -bench .
+```
+```
+go test -bench=.
 ```
 for the benchmarks
 
